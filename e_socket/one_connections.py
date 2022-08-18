@@ -2,17 +2,6 @@ import socket
 import sys
 import os
 
-def resource_path(relative_path):
-    try:
-    # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-
 def server(ip, port):
     sock.bind((ip, port))
     sock.listen(1)
@@ -21,23 +10,11 @@ def server(ip, port):
 def client(ip, port):
     sock.connect((ip, port))
 
-def decode(text: str):
-    message = []
-    val = 0
-    for letter in range(len(text)):
-        if text[letter] != ' ':
-            if len(message) == val:
-                message.append(text[letter])
-            else:
-                message[val] += text[letter]
-        else:
-            message.append('')
-            val += 1
-    return message
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 conn_old = None
 addr_old = None
-class multiplayer_socket:
+class Socket:
     def __init__(self,ip,port,type:str,listen=2,action_on_disconnect=None):
         self.sock = sock
         self.type = type# 1 for server, 2 for client
