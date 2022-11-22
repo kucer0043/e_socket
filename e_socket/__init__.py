@@ -1,4 +1,4 @@
 
-from .one_connections import *
-from .more_connections import *
-from .actions import *
+import one_connections
+import more_connections
+import actions
