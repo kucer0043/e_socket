@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='e_socket',
+    name='e-socket',
     version='1.0',
     packages=['e_socket'],
     url='https://github.com/kucer0043/e_socket',
