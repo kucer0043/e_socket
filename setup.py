@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='e-socket',
     version='0.1',
-    packages=['e_socket'],
+    packages=['e-socket'],
     url='https://github.com/kucer0043/e_socket',
     license='',
     author='kucer0043',
