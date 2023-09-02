@@ -2,6 +2,7 @@ import socket
 import sys
 import os
 
+
 def server(ip, port):
     sock.bind((ip, port))
     sock.listen(1)
@@ -10,14 +11,17 @@ def server(ip, port):
 def client(ip, port):
     sock.connect((ip, port))
 
+
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 conn_old = None
 addr_old = None
+
+
 class Socket:
-    def __init__(self,ip,port,type:str,listen=2,action_on_disconnect=None):
+    def __init__(self, ip, port, type: str, listen=2, action_on_disconnect=None):
         self.sock = sock
-        self.type = type# 1 for server, 2 for client
+        self.type = type  # 1 for server, 2 for client
         self.data = 'TEST'
         self.data_input = 'STRING'
         self.conn_old = None
@@ -26,17 +30,18 @@ class Socket:
         self.port = port
         self.listen = listen
         self.action_on_disconnect = action_on_disconnect
-        if self.type == "1":
-            server(self.ip,self.port)
+        if self.type == "server":
+            server(self.ip, self.port)
             self.sock.listen(self.listen)
-            self.conn_old,self.addr_old = self.sock.accept()
-        elif self.type == "2":
-            print(self.ip,self.port)
-            client(self.ip,self.port)
+            self.conn_old, self.addr_old = self.sock.accept()
+        elif self.type == "client":
+            print(self.ip, self.port)
+            client(self.ip, self.port)
         else:
             print("Invalid input")
             exit(-1)
-    def update(self,prinim=1): # ret
+
+    def update(self, prinim=1):  # ret
         self.conn = self.conn_old
         self.addr = self.addr_old
         try:

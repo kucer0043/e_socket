@@ -1,6 +1,5 @@
-
-def str_to_list(text: str,key=' '):
-    '''
+def str_to_list(text: str, key=' '):
+    """
     Use for converting string to list
     Input:
     text: str
@@ -18,7 +17,7 @@ def str_to_list(text: str,key=' '):
     print(str_to_list(text=b, key = "0"))
     ['hello', '54', '321']
 
-    '''
+    """
     message = []
     val = 0
     for letter in range(len(text)):
